@@ -1,0 +1,38 @@
+{
+    "name": "titantwentyone/filament-content-components",
+    "description": "Basic framework for collecting and displaying content through Filament",
+    "type": "library",
+    "require-dev": {
+        "orchestra/testbench": "^7.6",
+        "phpunit/phpunit": "^9.5",
+        "livewire/livewire": "^2.10.6"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Titantwentyone\\FilamentContentComponents\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tim Smith",
+            "email": "tim.smith@titan21.co.uk"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "filament/filament": "^2.13"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Titantwentyone\\FilamentContentComponents\\FilamentContentComponentsServiceProvider"
+            ]
+        }
+    }
+}

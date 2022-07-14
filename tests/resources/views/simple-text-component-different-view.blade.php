@@ -1,0 +1,1 @@
+{{ $differentdata['text'] }}
