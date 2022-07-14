@@ -4,6 +4,7 @@ namespace Tests;
 
 use Filament\PluginServiceProvider;
 use Livewire\Livewire;
+use Livewire\Testing\TestableLivewire;
 use Tests\Fixtures\Filament\Resources\PageResource;
 use Tests\Fixtures\Http\Livewire\ComplexLivewireComponent;
 use Tests\Fixtures\Http\Livewire\SimpleLivewireComponent;
@@ -23,5 +24,7 @@ class ResourceServiceProvider extends PluginServiceProvider
     {
         Livewire::component('simple-livewire-component', SimpleLivewireComponent::class);
         Livewire::component('complex-livewire-component', ComplexLivewireComponent::class);
+
+        TestableLivewire::mixin(new TestableLivewireMixin());
     }
 }

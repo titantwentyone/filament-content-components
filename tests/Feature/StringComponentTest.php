@@ -13,8 +13,6 @@ class StringComponentTest extends TestCase
 {
     use RefreshDatabase;
 
-
-
     /**
      * @test
      */
@@ -141,16 +139,16 @@ class StringComponentTest extends TestCase
             ]
         ]);
 
+        $expected = [
+            'data' => [
+                'text' => 'Just rendering a string'
+            ],
+            'type' => 'simple-text-without-view'
+        ];
+
         Livewire::test(EditPage::class, [
             'record' => $page->getKey()
         ])
-            ->assertSet('data.content', [
-                [
-                    'data' => [
-                        'text' => 'Just rendering a string'
-                    ],
-                    'type' => 'simple-text-without-view'
-                ]
-            ]);
+            ->assertArrayValueAtIndexEquals($expected, 'data.content', 0);
     }
 }
