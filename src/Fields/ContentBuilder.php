@@ -8,7 +8,8 @@ class ContentBuilder extends Builder
 {
     protected function setUp() : void
     {
-        $this->blocks([]);
+        parent::setUp();
+        $this->components();
     }
 
     public function getCreateItemButtonLabel() : string
@@ -16,7 +17,7 @@ class ContentBuilder extends Builder
         return "";
     }
 
-    protected function components(array|null $components = null) : void
+    public function components(array|null $components = null) : void
     {
         $this->blocks(collect(config('filament-cms.components'))->each(function($component) {
             return $component::getField();
