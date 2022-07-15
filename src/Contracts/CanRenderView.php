@@ -39,6 +39,6 @@ trait CanRenderView
             ->slug();
 
         //return implode('.', array_filter([$namespace, $view]));
-        return Arr::join([$namespace, $view], '.');
+        return Str::of(Arr::join([$namespace, $view], '.'))->trim('.');
     }
 }
