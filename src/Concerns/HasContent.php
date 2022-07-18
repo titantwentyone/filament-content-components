@@ -31,19 +31,21 @@ trait HasContent
         foreach($content_items as $item) {
             //$component_name = str_replace('-', '', Str::title($item['type']));
 
-            $component_parts = explode('.', $item['type']);
+//            $component_parts = explode('.', $item['type']);
+//
+//            $component_parts = collect($component_parts)->map(function($part) {
+//                return Str::of($part)
+//                    ->title()
+//                    ->replace('-', '');
+//            });
+//
+//            //$component_name = implode('\\', array_filter($component_parts->toArray()));
+//            $component_name = Arr::join($component_parts->toArray(), '\\');
+//
+//            $component = config('filament-content-components.namespace')."\\".$component_name;
+//            $output .= $component::processRender($item['data']);
 
-            $component_parts = collect($component_parts)->map(function($part) {
-                return Str::of($part)
-                    ->title()
-                    ->replace('-', '');
-            });
-
-            //$component_name = implode('\\', array_filter($component_parts->toArray()));
-            $component_name = Arr::join($component_parts->toArray(), '\\');
-
-            $component = config('filament-content-components.namespace')."\\".$component_name;
-            $output .= $component::processRender($item['data']);
+            $output .= parseContentComponent($item);
         }
 
         return $output;

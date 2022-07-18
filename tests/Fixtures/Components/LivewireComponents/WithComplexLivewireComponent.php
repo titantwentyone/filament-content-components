@@ -13,12 +13,11 @@ class WithComplexLivewireComponent extends ContentComponent
 
     protected static string $component = 'complex-livewire-component';
 
-    public static function getField(): Block
+    public static function getField(): array
     {
-        return Block::make('simple-livewire-component')
-        ->schema([
+        return [
             TextArea::make('message')
-        ]);
+        ];
     }
 
     protected static function mountArguments($data): array

@@ -9,14 +9,6 @@ use ReflectionClass;
 
 trait CanRenderView
 {
-    /**
-     * @return string
-     */
-    private static function getNamespace(): string
-    {
-        return (new ReflectionClass(static::class))->getNamespaceName();
-    }
-
     protected static function renderView(array $data) : View
     {
         $view = static::$view ?? static::getViewPath($data);
@@ -28,7 +20,7 @@ trait CanRenderView
 
     protected static function getViewPath(array $data) : string
     {
-        $namespace = Str::of(static::getNamespace())
+        $namespace = Str::of(getNamespace(static::class))
             ->remove(config('filament-content-components.namespace'))
             ->replace('\\', '.')
             ->headline()

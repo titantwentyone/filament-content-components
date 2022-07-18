@@ -11,12 +11,11 @@ class StringContentComponentWithOverriddenMethod  extends ContentComponent
 {
     use CanRenderString;
 
-    public static function getField(): Block
+    public static function getField(): array
     {
-        return Block::make('simple-text-component')
-            ->schema([
-                TextArea::make('text')
-            ]);
+        return [
+            TextArea::make('text')
+        ];
     }
 
     public static function renderString($data) : string

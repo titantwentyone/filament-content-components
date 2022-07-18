@@ -13,11 +13,10 @@ class WithSimpleLivewireComponent extends ContentComponent
 
     protected static string $component = 'simple-livewire-component';
 
-    public static function getField(): Block
+    public static function getField(): array
     {
-        return Block::make('simple-livewire-component')
-        ->schema([
+        return [
             TextArea::make('message')
-        ]);
+        ];
     }
 }

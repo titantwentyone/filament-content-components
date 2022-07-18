@@ -13,11 +13,10 @@ class ViewContentComponentWithOverriddenViewProperty extends ContentComponent
 
     protected static string $view = 'custom.view.path.my-component';
 
-    public static function getField(): Block
+    public static function getField(): array
     {
-        return Block::make('simple-text-component')
-            ->schema([
-                TextArea::make('text')
-            ]);
+        return [
+            TextArea::make('text')
+        ];
     }
 }

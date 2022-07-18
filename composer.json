@@ -9,6 +9,9 @@
     },
     "license": "MIT",
     "autoload": {
+        "files" : [
+            "helpers/helpers.php"
+        ],
         "psr-4": {
             "Titantwentyone\\FilamentContentComponents\\": "src/"
         }

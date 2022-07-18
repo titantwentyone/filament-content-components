@@ -8,7 +8,7 @@ use Livewire\Component;
 
 abstract class ContentComponent extends Component
 {
-    public static abstract function getField(): Block;
+    public static abstract function getField(): array;
 
     //public static abstract function render($data): string|View;
 

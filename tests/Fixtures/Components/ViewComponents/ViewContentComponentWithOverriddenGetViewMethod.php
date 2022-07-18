@@ -11,16 +11,15 @@ class ViewContentComponentWithOverriddenGetViewMethod extends ContentComponent
 {
     use CanRenderView;
 
-    public static function getField(): Block
+    public static function getField(): array
     {
-        return Block::make('simple-text-component')
-            ->schema([
-                Select::make('happy')
-                    ->options([
-                        'yes' => 'Yes',
-                        'no' => 'No'
-                    ])
-            ]);
+        return [
+            Select::make('happy')
+                ->options([
+                    'yes' => 'Yes',
+                    'no' => 'No'
+                ])
+        ];
     }
 
     public static function getViewPath($data): string

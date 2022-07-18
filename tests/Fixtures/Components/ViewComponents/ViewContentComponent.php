@@ -13,11 +13,10 @@ class ViewContentComponent extends ContentComponent
 
     //protected static string $view = 'simple-text-component';
 
-    public static function getField(): Block
+    public static function getField(): array
     {
-        return Block::make('simple-text-component')
-            ->schema([
-                TextArea::make('text')
-            ]);
+        return [
+            TextArea::make('text')
+        ];
     }
 }
