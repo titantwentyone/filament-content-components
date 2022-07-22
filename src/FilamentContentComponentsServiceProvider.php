@@ -12,8 +12,8 @@ class FilamentContentComponentsServiceProvider extends PluginServiceProvider
     public function configurePackage(Package $package): void
     {
         $package->name('filament-content-components')
-            ->hasConfigFile();
-            //->hasViews();
+            ->hasConfigFile()
+            ->hasViews();
     }
 
     public function bootingPackage()

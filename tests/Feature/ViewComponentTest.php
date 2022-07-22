@@ -3,6 +3,10 @@
 namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Fixtures\Components\ViewComponents\ViewContentComponent;
+use Tests\Fixtures\Components\ViewComponents\ViewContentComponentWithOverriddenGetViewMethod;
+use Tests\Fixtures\Components\ViewComponents\ViewContentComponentWithOverriddenMethod;
+use Tests\Fixtures\Components\ViewComponents\ViewContentComponentWithOverriddenViewProperty;
 use Tests\Fixtures\Models\Page;
 use Tests\TestCase;
 
@@ -107,5 +111,47 @@ class ViewComponentTest extends TestCase
         ]);
 
         $this->assertEquals("I'm glad you're happy!", $page->parsedContent);
+    }
+
+    /**
+     * @test
+     */
+    public function it_will_output_the_view()
+    {
+        $data = [
+            'text' => 'a short message'
+        ];
+
+        $this->assertEquals(
+            view('view-components.view-content-component', ['data' => $data]),
+            ViewContentComponent::processRender($data)
+        );
+
+        $data = [
+            'happy' => 'yes'
+        ];
+
+        $this->assertEquals(
+            view('view-components.happy', ['data' => $data]),
+            ViewContentComponentWithOverriddenGetViewMethod::processRender($data)
+        );
+
+        $data = [
+            'text' => 'a short message'
+        ];
+
+        $this->assertEquals(
+            view('simple-text-component-different-view', ['differentdata' => $data]),
+            ViewContentComponentWithOverriddenMethod::processRender($data)
+        );
+
+        $data = [
+            'text' => 'another short message'
+        ];
+
+        $this->assertEquals(
+            view('custom.view.path.my-component', ['data' => $data]),
+            ViewContentComponentWithOverriddenViewProperty::processRender($data)
+        );
     }
 }

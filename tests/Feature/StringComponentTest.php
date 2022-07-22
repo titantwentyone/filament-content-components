@@ -2,8 +2,11 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Livewire\ComponentConcerns\RendersLivewireComponents;
 use Livewire\Livewire;
+use Tests\Fixtures\Components\StringComponents\StringContentComponent;
 use Tests\Fixtures\Models\User;
 use Tests\TestCase;
 use Tests\Fixtures\Filament\Resources\PageResource\Pages\EditPage;
@@ -45,9 +48,10 @@ class StringComponentTest extends TestCase
             'text' => [
                 [
                     'data' => [
-                        'text' => 'Different field used'
+                        'greeting' => 'greetings',
+                        'name' => 'Bob'
                     ],
-                    'type' => 'string-components.string-content-component-with-overridden-method'
+                    'type' => 'string-components.string-content-component'
                 ],
                 [
                     'data' => [
@@ -59,7 +63,7 @@ class StringComponentTest extends TestCase
             ]
         ]);
 
-        $this->assertEquals('Different field usedhello Jane', $page->parsedText);
+        $this->assertEquals('greetings Bobhello Jane', $page->parsedText);
     }
 
     /**
@@ -109,14 +113,15 @@ class StringComponentTest extends TestCase
             'text' => [
                 [
                     'data' => [
-                        'text' => 'hello there'
+                        'greeting' => 'hello',
+                        'name' => 'geoff'
                     ],
-                    'type' => 'string-components.string-content-component-with-overridden-method'
+                    'type' => 'string-components.string-content-component'
                 ]
             ]
         ]);
 
-        $this->assertEquals('hello there', $page->parsedText);
+        $this->assertEquals('hello geoff', $page->parsedText);
     }
 
     /**
@@ -150,5 +155,18 @@ class StringComponentTest extends TestCase
             'record' => $page->getKey()
         ])
             ->assertArrayValueAtIndexEquals($expected, 'data.content', 0);
+    }
+
+    /**
+     * @test
+     */
+    public function it_will_output_the_string()
+    {
+        $data = [
+            'greeting' => 'Congratulations',
+            'name' => 'Bob'
+        ];
+
+        $this->assertEquals('Congratulations Bob', StringContentComponent::processrender($data));
     }
 }
