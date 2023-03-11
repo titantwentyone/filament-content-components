@@ -111,6 +111,7 @@ class LivewireComponentTest extends TestCase
 
     /**
      * Replaces wire:id and wire:initial-data with anonymized values for id (in wire:id) and checksum (in wire:initial-data)
+     * so that they can be used for comparisons when testing
      * @param $html string rendered livewire component
      * @return string anonymized livewire component
      */
