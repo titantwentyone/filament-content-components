@@ -1,22 +1,27 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Components;
 
-use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
+use Filament\Forms\ComponentContainer;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\View\View;
+use Livewire\Component;
 use Livewire\ComponentConcerns\RendersLivewireComponents;
 use Livewire\Livewire;
+use Mockery\MockInterface;
 use Tests\Fixtures\Components\LivewireComponents\WithSimpleLivewireComponent;
-use Tests\Fixtures\Components\StringComponents\StringContentComponent;
 use Tests\Fixtures\Filament\Resources\PageResource\Pages\EditPage;
-use Tests\Fixtures\Http\Livewire\SimpleLivewireComponent;
 use Tests\Fixtures\Models\Page;
 use Tests\TestCase;
+use Titantwentyone\FilamentContentComponents\Concerns\HasContent;
+use Titantwentyone\FilamentContentComponents\Contracts\CanRenderLivewire;
+use Titantwentyone\FilamentContentComponents\Contracts\ContentComponent;
+use Titantwentyone\FilamentContentComponents\Fields\ContentBuilder;
 
 class LivewireComponentTest extends TestCase
 {
     use RefreshDatabase;
-    //use InteractsWithViews;
     use RendersLivewireComponents;
 
     /**

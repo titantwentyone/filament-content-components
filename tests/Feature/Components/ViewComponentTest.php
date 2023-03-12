@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Components;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Fixtures\Components\ViewComponents\ViewContentComponent;

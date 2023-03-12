@@ -10,6 +10,7 @@ use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Livewire\LivewireServiceProvider;
 use Tests\Fixtures\Models\User;
+use Titantwentyone\FilamentContentComponents\FilamentContentComponentsServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -36,6 +37,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
             TablesServiceProvider::class,
             LivewireServiceProvider::class,
             ResourceServiceProvider::class,
+            FilamentContentComponentsServiceProvider::class
         ]);
     }
 

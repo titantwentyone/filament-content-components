@@ -2,5 +2,5 @@
 
 return [
     'namespace' => '\\App\\Components',
-    'components' => []
+    'path' => 'app/components'
 ];

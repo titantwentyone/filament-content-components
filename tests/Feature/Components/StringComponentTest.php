@@ -1,16 +1,14 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Components;
 
-use Illuminate\Foundation\Testing\Concerns\InteractsWithViews;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Livewire\ComponentConcerns\RendersLivewireComponents;
 use Livewire\Livewire;
 use Tests\Fixtures\Components\StringComponents\StringContentComponent;
-use Tests\Fixtures\Models\User;
-use Tests\TestCase;
 use Tests\Fixtures\Filament\Resources\PageResource\Pages\EditPage;
 use Tests\Fixtures\Models\Page;
+use Tests\Fixtures\Models\User;
+use Tests\TestCase;
 
 class StringComponentTest extends TestCase
 {
