@@ -1,0 +1,62 @@
+# For more information: https://laravel.com/docs/sail
+version: '3'
+services:
+  filament-content-components.package:
+    build:
+      context: ./vendor/laravel/sail/runtimes/8.2
+      dockerfile: Dockerfile
+      args:
+        WWWGROUP: '${WWWGROUP}'
+    image: sail-8.2/app
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    #        ports:
+    #            - '${APP_PORT:-80}:80'
+    #            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+    environment:
+      WWWUSER: '${WWWUSER}'
+      LARAVEL_SAIL: 1
+      XDEBUG_MODE: 'coverage,develop,debug'
+      XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+      PHP_CLI_SERVER_WORKERS: 6
+    volumes:
+      - '.:/var/www/html'
+    networks:
+      - packages.filament-content-components
+    depends_on:
+      - filament-content-components.mysql
+  filament-content-components.coverage:
+    image: httpd:latest
+    #        ports:
+    #            - '81:80'
+    expose:
+      - 80
+    volumes:
+      - ./coverage:/usr/local/apache2/htdocs
+    networks:
+      - packages.filament-content-components
+  filament-content-components.mysql:
+    image: 'mysql/mysql-server:8.0'
+    #        ports:
+    #            - '${FORWARD_DB_PORT:-3306}:3306'
+    expose:
+      - 3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: 'testing'
+      MYSQL_USER: 'sail'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - './vendor/laravel/sail/database/mysql/create-testing-database.sh:/docker-entrypoint-initdb.d/10-create-testing-database.sh'
+    networks:
+      - packages.filament-content-components
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-ppassword"]
+      retries: 3
+      timeout: 5s
+networks:
+  packages.filament-content-components:
+    name: packages.filament-content-components
+    driver: bridge

@@ -6,9 +6,11 @@ use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
 use Filament\FilamentServiceProvider;
 use Filament\Forms\FormsServiceProvider;
+use Filament\Notifications\NotificationsServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Livewire\LivewireServiceProvider;
+use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
 use Tests\Fixtures\Models\User;
 use Titantwentyone\FilamentContentComponents\FilamentContentComponentsServiceProvider;
 
@@ -29,13 +31,15 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app): array
     {
         return array_merge(parent::getPackageProviders($app), [
+            BladeCaptureDirectiveServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
             BladeIconsServiceProvider::class,
             FilamentServiceProvider::class,
             FormsServiceProvider::class,
+            LivewireServiceProvider::class,
+            NotificationsServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
-            LivewireServiceProvider::class,
             ResourceServiceProvider::class,
             FilamentContentComponentsServiceProvider::class
         ]);
@@ -69,6 +73,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         //Specific config for Filament CMS
         $app['config']->set('filament-content-components.namespace', 'Tests\Fixtures\Components');
+        $app['config']->set('filament-content-components.path', 'tests/Fixtures/Components');
 
         $app['config']->set('app.key', 'base64:Hupx3yAySikrM2/edkZQNQHslgDWYfiBfCuSThJ5SK8=');
     }
