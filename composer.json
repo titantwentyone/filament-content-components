@@ -26,6 +26,18 @@
         }
     },
     "autoload-dev": {
+        "exclude-from-classmap": [
+            "\\Pest\\PendingCalls\\TestCall",
+            "\\Pest\\Factories\\TestCaseFactory",
+            "\\Pest\\Factories\\TestCaseMethodFactory"
+        ],
+        "files": [
+            "overrides/pestphp/pest/src/PendingCalls/TestCall.php",
+            "overrides/pestphp/pest/src/Factories/TestCaseFactory.php",
+            "overrides/pestphp/pest/src/Factories/TestCaseMethodFactory.php",
+            "overrides/pestphp/pest/src/Factories/Annotations/Environment.php",
+            "overrides/pestphp/pest/src/Factories/Testbench/Environment.php"
+        ],
         "psr-4": {
             "Tests\\": "tests/"
         }
