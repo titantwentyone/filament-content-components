@@ -11,6 +11,8 @@ use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Livewire\LivewireServiceProvider;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
+use Tests\Fixtures\Components\LivewireComponents\WithComplexLivewireComponent;
+use Tests\Fixtures\Components\StringComponents\StringContentComponent;
 use Tests\Fixtures\Models\User;
 use Titantwentyone\FilamentContentComponents\FilamentContentComponentsServiceProvider;
 
@@ -74,6 +76,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
         //Specific config for Filament CMS
         $app['config']->set('filament-content-components.namespace', 'Tests\Fixtures\Components');
         $app['config']->set('filament-content-components.path', 'tests/Fixtures/Components');
+
 
         $app['config']->set('app.key', 'base64:Hupx3yAySikrM2/edkZQNQHslgDWYfiBfCuSThJ5SK8=');
     }

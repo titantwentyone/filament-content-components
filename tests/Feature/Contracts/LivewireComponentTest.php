@@ -33,7 +33,8 @@ it('will render a simple livewire component', function() {
 
     $this->assertStringContainsString('Just a simple message', $page->parsedContent);
     $this->assertStringContainsString('from livewire', $page->parsedContent);
-});
+})
+->covers(\Titantwentyone\FilamentContentComponents\Contracts\CanRenderLivewire::class);
 
 it('will render a complex livewire component', function () {
 
@@ -65,7 +66,8 @@ it('will render a complex livewire component', function () {
     $this->assertStringContainsString('Just a simple message', $page->parsedContent);
     $this->assertStringContainsString('I am happy', $page->parsedContent);
 
-});
+})
+->covers(\Titantwentyone\FilamentContentComponents\Contracts\CanRenderLivewire::class);
 
 it('will output the livewire component', function () {
 
@@ -84,4 +86,5 @@ it('will output the livewire component', function () {
         $component_rendered,
         $livewire_rendered
     );
-});
+})
+->covers(\Titantwentyone\FilamentContentComponents\Contracts\CanRenderLivewire::class);

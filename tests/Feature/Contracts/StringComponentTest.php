@@ -17,7 +17,8 @@ it('can handle different field names for content', function() {
 
     $this->assertEquals('Different field used', $page->parsedText);
 
-});
+})
+->covers(\Titantwentyone\FilamentContentComponents\Contracts\CanRenderString::class);
 
 it('will render multiple components', function () {
 
@@ -44,7 +45,8 @@ it('will render multiple components', function () {
 
     $this->assertEquals('greetings Bobhello Jane', $page->parsedText);
 
-});
+})
+->covers(\Titantwentyone\FilamentContentComponents\Contracts\CanRenderString::class);
 
 it('will handle empty content', function () {
 
@@ -56,7 +58,8 @@ it('will handle empty content', function () {
 
     $this->assertEquals('', $page->parsedText);
 
-});
+})
+->covers(\Titantwentyone\FilamentContentComponents\Contracts\CanRenderString::class);
 
 it('will render a string component', function () {
 
@@ -76,7 +79,8 @@ it('will render a string component', function () {
 
     $this->assertEquals('hello Jane', $page->parsedText);
 
-});
+})
+->covers(\Titantwentyone\FilamentContentComponents\Contracts\CanRenderString::class);
 
 it('will render a string component with overriden render method', function () {
 
@@ -96,7 +100,8 @@ it('will render a string component with overriden render method', function () {
 
     $this->assertEquals('hello geoff', $page->parsedText);
 
-});
+})
+->covers(\Titantwentyone\FilamentContentComponents\Contracts\CanRenderString::class);
 
 test('filament will correctly populate the content field', function () {
 
@@ -124,7 +129,8 @@ test('filament will correctly populate the content field', function () {
         'record' => $page->getKey()
     ])
         ->assertArrayValueAtIndexEquals($expected, 'data.content', 0);
-});
+})
+->covers(\Titantwentyone\FilamentContentComponents\Contracts\CanRenderString::class);
 
 it('will output the string', function () {
 
@@ -135,4 +141,5 @@ it('will output the string', function () {
 
     $this->assertEquals('Congratulations Bob', \Tests\Fixtures\Components\StringComponents\StringContentComponent::processrender($data));
 
-});
+})
+->covers(\Titantwentyone\FilamentContentComponents\Contracts\CanRenderString::class);

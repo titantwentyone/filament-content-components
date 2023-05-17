@@ -22,17 +22,23 @@ class ContentBuilder extends Builder
         $this->components();
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     public function getCreateItemButtonLabel() : string
     {
         return "Add Component";
     }
 
-    public function components(array|null $components = null) : static
+    public function components(array $components = []) : static
     {
-        if(config('filament-content-components.components') && count(config('filament-content-components.components'))) {
+        if(count(config('filament-content-components.components'))) {
             $components = config('filament-content-components.components');
         } else {
-            $components = $components ?? app('components');
+            //$components = count($components) ?: app('components');
+            if(!count($components)) {
+                $components = app('components');
+            }
         }
 
         $this->childComponents(function() use ($components) {

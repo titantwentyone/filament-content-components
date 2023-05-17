@@ -17,12 +17,7 @@ use Tests\Fixtures\Models\User;
 uses(
     \Tests\TestCase::class,
     \Illuminate\Foundation\Testing\RefreshDatabase::class
-)->in('Feature/Components');
-
-uses(
-    \Tests\TestCase::class,
-    \Illuminate\Foundation\Testing\RefreshDatabase::class
-)->in('Feature/Fields');
+)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------

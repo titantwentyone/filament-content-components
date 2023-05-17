@@ -35,7 +35,8 @@ it('will render a view component with overriden render method', function () {
 
     $this->assertEquals('Amazing!!', $page->parsedContent);
 
-});
+})
+->covers(\Tests\Fixtures\Components\ViewComponents\ViewContentComponent::class);
 
 it('will render a view component with overriden view property', function () {
 
@@ -54,7 +55,8 @@ it('will render a view component with overriden view property', function () {
 
     $this->assertEquals('Amazing!!', $page->parsedContent);
 
-});
+})
+->covers(\Tests\Fixtures\Components\ViewComponents\ViewContentComponent::class);
 
 it('will render a view component with overridden get view method', function () {
 
@@ -88,7 +90,8 @@ it('will render a view component with overridden get view method', function () {
 
     $this->assertEquals("I'm glad you're happy!", $page->parsedContent);
 
-});
+})
+->covers(\Tests\Fixtures\Components\ViewComponents\ViewContentComponent::class);
 
 it('will output the view', function () {
 
@@ -127,4 +130,5 @@ it('will output the view', function () {
         view('custom.view.path.my-component', ['data' => $data]),
         \Tests\Fixtures\Components\ViewComponents\ViewContentComponentWithOverriddenViewProperty::processRender($data)
     );
-});
+})
+->covers(\Tests\Fixtures\Components\ViewComponents\ViewContentComponent::class);
