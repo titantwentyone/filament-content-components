@@ -13,6 +13,10 @@ trait CanRenderView
     {
         $view = static::$view ?? static::getViewPath($data);
 
+        $view_folder = config('filament-content-components.view_root') ? config('filament-content-components.view_root')."." : '';
+
+        $view = $view_folder.$view;
+
         return view($view, [
             'data' => $data
         ]);
