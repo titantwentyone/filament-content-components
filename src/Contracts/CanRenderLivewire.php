@@ -8,13 +8,13 @@ use Livewire\Response;
 
 trait CanRenderLivewire
 {
-    protected static function renderLivewire($data) : Response
+    protected static function renderLivewire(ContentComponent $component) : Response
     {
         static::$component ?? throw new Exception('no component property defined');
 
         return Livewire::mount(static::$component, array_merge(
-            ['data' => $data],
-            static::mountArguments($data)
+            ['data' => $component->getData()],
+            static::mountArguments($component->getData())
         ));
     }
 

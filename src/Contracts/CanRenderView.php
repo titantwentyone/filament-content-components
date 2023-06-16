@@ -9,20 +9,20 @@ use ReflectionClass;
 
 trait CanRenderView
 {
-    protected static function renderView(array $data) : View
+    protected static function renderView(ContentComponent $component) : View
     {
-        $view = static::$view ?? static::getViewPath($data);
+        $view = static::$view ?? static::getViewPath($component);
 
         $view_folder = config('filament-content-components.view_root') ? config('filament-content-components.view_root')."." : '';
 
         $view = $view_folder.$view;
 
         return view($view, [
-            'data' => $data
+            'data' => $component->getData()
         ]);
     }
 
-    protected static function getViewPath(array $data) : string
+    protected static function getViewPath(ContentComponent $component) : string
     {
         $namespace = Str::of(getNamespace(static::class))
             ->remove(config('filament-content-components.namespace'))

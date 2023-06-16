@@ -99,8 +99,10 @@ it('will output the view', function () {
         'text' => 'a short message'
     ];
 
+    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data);
+
     $this->assertEquals(
-        view('view-components.view-content-component', ['data' => $data]),
+        view('view-components.view-content-component', ['data' => $component->getData()]),
         \Tests\Fixtures\Components\ViewComponents\ViewContentComponent::processRender($data)
     );
 
@@ -108,8 +110,10 @@ it('will output the view', function () {
         'happy' => 'yes'
     ];
 
+    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data);
+
     $this->assertEquals(
-        view('view-components.happy', ['data' => $data]),
+        view('view-components.happy', ['data' => $component->getData()]),
         \Tests\Fixtures\Components\ViewComponents\ViewContentComponentWithOverriddenGetViewMethod::processRender($data)
     );
 
@@ -117,8 +121,10 @@ it('will output the view', function () {
         'text' => 'a short message'
     ];
 
+    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data);
+
     $this->assertEquals(
-        view('simple-text-component-different-view', ['differentdata' => $data]),
+        view('simple-text-component-different-view', ['differentdata' => $component->getData()]),
         \Tests\Fixtures\Components\ViewComponents\ViewContentComponentWithOverriddenMethod::processRender($data)
     );
 
@@ -126,8 +132,10 @@ it('will output the view', function () {
         'text' => 'another short message'
     ];
 
+    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data);
+
     $this->assertEquals(
-        view('custom.view.path.my-component', ['data' => $data]),
+        view('custom.view.path.my-component', ['data' => $component->getData()]),
         \Tests\Fixtures\Components\ViewComponents\ViewContentComponentWithOverriddenViewProperty::processRender($data)
     );
 })

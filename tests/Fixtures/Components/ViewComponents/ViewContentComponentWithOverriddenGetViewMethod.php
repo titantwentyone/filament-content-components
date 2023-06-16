@@ -22,9 +22,9 @@ class ViewContentComponentWithOverriddenGetViewMethod extends ContentComponent
         ];
     }
 
-    public static function getViewPath($data): string
+    public static function getViewPath($component): string
     {
-        return match($data['happy']) {
+        return match($component->getData('happy')) {
             'yes' => 'view-components.happy',
             'no' => 'view-components.not-happy'
         };

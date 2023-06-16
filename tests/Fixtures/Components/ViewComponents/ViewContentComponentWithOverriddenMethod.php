@@ -21,10 +21,10 @@ class ViewContentComponentWithOverriddenMethod extends ContentComponent
         ];
     }
 
-    public static function renderView($data): View
+    public static function renderView($component): View
     {
         return view('simple-text-component-different-view', [
-            'differentdata' => $data
+            'differentdata' => $component->getData()
         ]);
     }
 

@@ -19,8 +19,8 @@ class StringContentComponent extends ContentComponent
         ];
     }
 
-    protected static function renderString($data): string
+    protected static function renderString($component) : string
     {
-        return "{$data['greeting']} {$data['name']}";
+        return "{$component->getData()['greeting']} {$component->getData()['name']}";
     }
 }
