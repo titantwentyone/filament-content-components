@@ -2,6 +2,7 @@
 
 namespace Titantwentyone\FilamentContentComponents\Contracts;
 
+use Dotenv\Parser\Parser;
 use Filament\Forms\Components\Builder\Block;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -16,13 +17,14 @@ class ContentComponent extends Component
     }
 
     private $data = [];
-
+    private ?string $type = null;
     private ?ContentComponent $parent = null;
     private ?array $children = null;
 
-    public function __construct(array $data, ContentComponent $parent = null, array $children = null)
+    final public function __construct(array $data, string $type, ContentComponent $parent = null, array $children = null)
     {
         $this->data = $data;
+        $this->type = $type;
         $this->parent = $parent;
         $this->children = $children;
     }
@@ -41,7 +43,7 @@ class ContentComponent extends Component
 
         $trait ?? throw new \Exception('Component must use a component trait');
 
-        $component = new ContentComponent($data, $parent, $children);
+        $component = new ContentComponent($data, get_class(), $parent, $children);
 
         $rendered = "";
 
@@ -67,5 +69,10 @@ class ContentComponent extends Component
     public function getChildren($key = null) : array
     {
         return $this->children[$key] ?? $this->children;
+    }
+
+    public function getType() : string
+    {
+        return $this->type;
     }
 }

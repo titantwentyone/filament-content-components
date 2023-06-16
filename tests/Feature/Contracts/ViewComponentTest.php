@@ -99,7 +99,7 @@ it('will output the view', function () {
         'text' => 'a short message'
     ];
 
-    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data);
+    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data, \Tests\Fixtures\Components\ViewComponents\ViewContentComponent::class);
 
     $this->assertEquals(
         view('view-components.view-content-component', ['data' => $component->getData()]),
@@ -110,7 +110,7 @@ it('will output the view', function () {
         'happy' => 'yes'
     ];
 
-    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data);
+    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data, \Tests\Fixtures\Components\ViewComponents\ViewContentComponentWithOverriddenGetViewMethod::class);
 
     $this->assertEquals(
         view('view-components.happy', ['data' => $component->getData()]),
@@ -121,7 +121,7 @@ it('will output the view', function () {
         'text' => 'a short message'
     ];
 
-    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data);
+    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data, \Tests\Fixtures\Components\ViewComponents\ViewContentComponentWithOverriddenMethod::class);
 
     $this->assertEquals(
         view('simple-text-component-different-view', ['differentdata' => $component->getData()]),
@@ -132,7 +132,7 @@ it('will output the view', function () {
         'text' => 'another short message'
     ];
 
-    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data);
+    $component = new \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent($data, \Tests\Fixtures\Components\ViewComponents\ViewContentComponentWithOverriddenViewProperty::class);
 
     $this->assertEquals(
         view('custom.view.path.my-component', ['data' => $component->getData()]),
