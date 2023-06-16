@@ -41,7 +41,7 @@ if(!function_exists('slugifyClass'))
     {
         $namespace = Str::of(getNamespace($classname))
             ->remove(config('filament-content-components.namespace'))
-            ->replace('\\', '-')
+            ->replace('\\', '.')
             ->headline()
             ->slug();
 
@@ -49,6 +49,6 @@ if(!function_exists('slugifyClass'))
             ->headline()
             ->slug();
 
-        return Str::of(Arr::join([$namespace, $class], '-'))->trim('-');
+        return Str::of(Arr::join([$namespace, $class], '.'))->trim('.')->toString();
     }
 }
