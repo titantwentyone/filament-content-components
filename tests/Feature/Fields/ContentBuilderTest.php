@@ -12,6 +12,7 @@ function components_defined_in_service_container($app)
 {
     $app['config']->set('filament-content-components.namespace', 'Tests\Fixtures\Components');
     $app['config']->set('filament-content-components.path', 'tests/Fixtures/Components');
+    $app['config']->set('filament-content-components.components', []);
 }
 
 it('will automatically detect components from the service container', function() {
