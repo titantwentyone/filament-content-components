@@ -9,7 +9,7 @@ if(!function_exists('parseContentComponent'))
      * @param $item array component to be parsed
      * @return string rendered output of component
      */
-    function parseContentComponent(array $item) : string
+    function parseContentComponent(array $item, $parent = null, $children = null) : string
     {
         $component_parts = explode('.', $item['type']);
 
@@ -22,7 +22,7 @@ if(!function_exists('parseContentComponent'))
         $component_name = Arr::join($component_parts->toArray(), '\\');
 
         $component = config('filament-content-components.namespace')."\\".$component_name;
-        return $component::processRender($item['data']);
+        return $component::processRender($item['data'], $parent, $children);
     }
 }
 
