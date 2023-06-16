@@ -56,9 +56,15 @@ class ContentComponent extends Component
         return $rendered;
     }
 
-    public function getData($key = null) : string | array
+    public function getData($key = null) : string | array | null
     {
-        return $this->data[$key] ?? $this->data;
+        if(isset($key) && isset($this->data[$key])) {
+            return $this->data[$key];
+        } elseif(!isset($key)) {
+            return $this->data;
+        }
+
+        return null;
     }
 
     public function getParent() : ContentComponent
