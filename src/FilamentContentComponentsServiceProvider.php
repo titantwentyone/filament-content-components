@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Str;
 use Spatie\LaravelPackageTools\Package;
 use Symfony\Component\Finder\SplFileInfo;
+use Titantwentyone\FilamentContentComponents\Console\Commands\MakeComponentCommand;
 use Titantwentyone\FilamentContentComponents\Contracts\ContentComponent;
 use function League\Uri\parse;
 
@@ -17,6 +18,7 @@ class FilamentContentComponentsServiceProvider extends PluginServiceProvider
     {
         $package->name('filament-content-components')
             ->hasConfigFile()
+            ->hasCommands(MakeComponentCommand::class)
             ->hasViews();
     }
 
