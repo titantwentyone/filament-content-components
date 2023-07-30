@@ -1,0 +1,22 @@
+<?php
+
+use Filament\Forms\Components\Builder\Block;
+use Filament\Forms\Components\Textarea;
+use Titantwentyone\FilamentContentComponents\Contracts\ContentComponent;
+
+class {{ component }} extends ContentComponent
+{
+    use {{ type }};
+
+    {{ livewire_component }}
+
+    public static function getField(): Block
+    {
+        return Block::make('{{ view }}')
+            ->schema([
+                TextInput::make('hello')
+            ]);
+    }
+
+    {{ render_method }}
+}
