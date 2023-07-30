@@ -102,6 +102,10 @@ class MakeComponentCommand extends Command
             $stub
         );
 
+        if(!$filesystem->exists(app_path('Components')))
+        {
+            $filesystem->makeDirectory(app_path('Components'));
+        }
         //$this->writeFile($targetPath, $stub);
         $filesystem->put($targetPath, $stub);
 
