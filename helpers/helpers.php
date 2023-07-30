@@ -13,15 +13,21 @@ if(!function_exists('parseContentComponent'))
     {
         $component_parts = explode('.', $item['type']);
 
-        $component_parts = collect($component_parts)->map(function($part) {
-            return Str::of($part)
-                ->title()
-                ->replace('-', '');
-        });
+        $component_parts = collect($component_parts)
+            ->map(function($part) {
+                return Str::of($part)
+                        ->title()
+                        ->replace('-', '');
+                });
 
         $component_name = Arr::join($component_parts->toArray(), '\\');
 
         $component = config('filament-content-components.namespace')."\\".$component_name;
+
+        if(!method_exists($component, 'processRender')) {
+            throw new \BadMethodCallException('Method processRender not found on '.$component.'. Have you extended from '.\Titantwentyone\FilamentContentComponents\Contracts\ContentComponent::class);
+        }
+
         return $component::processRender($item['data'], $parent, $children);
     }
 }
@@ -45,9 +51,15 @@ if(!function_exists('slugifyClass'))
             ->headline()
             ->slug();
 
+//        dump(config('filament-content-components.namespace'));
+//        dump(getNamespace($classname));
+//        dump($namespace);
+
         $class = Str::of(class_basename($classname))
             ->headline()
             ->slug();
+
+        //dd($class);
 
         return Str::of(Arr::join([$namespace, $class], '.'))->trim('.')->toString();
     }
