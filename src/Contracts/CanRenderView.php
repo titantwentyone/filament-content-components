@@ -17,6 +17,10 @@ trait CanRenderView
 
         $view = $view_folder.$view;
 
+        if((new \Illuminate\Filesystem\Filesystem)->isDirectory(resource_path('views/'.str_replace('.', '/', $view)))) {
+            $view = $view.'.index';
+        }
+
         return view($view, [
             'data' => $component->getData()
         ]);
