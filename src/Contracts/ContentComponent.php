@@ -67,7 +67,7 @@ class ContentComponent extends Component
         return null;
     }
 
-    public function getParent() : ContentComponent
+    public function getParent() : ?ContentComponent
     {
         return $this->parent;
     }
