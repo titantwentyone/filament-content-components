@@ -77,7 +77,7 @@ it('will output the livewire component', function () {
         ]
     ];
 
-    $component = \Livewire\Livewire::mount('simple-livewire-component', $data);
+    $component = \Livewire\Livewire::mount('simple-livewire-component', $data['data']);
 
     $livewire_rendered = anonymizeLivewireComponent($component->html());
     $component_rendered = anonymizeLivewireComponent(\Tests\Fixtures\Components\LivewireComponents\WithSimpleLivewireComponent::processrender($data['data']));

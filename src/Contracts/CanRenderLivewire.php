@@ -13,7 +13,7 @@ trait CanRenderLivewire
         static::$component ?? throw new Exception('no component property defined');
 
         return Livewire::mount(static::$component, array_merge(
-            ['data' => $component->getData()],
+            $component->getData(),
             static::mountArguments($component->getData())
         ));
     }

@@ -1,4 +1,4 @@
 <div>
-{{ $data['message'] }}
+{{ $message }}
 {{ $another_message }}
 </div>

@@ -8,9 +8,9 @@ class SimpleLivewireComponent extends Component
 {
     public string $another_message = 'from livewire';
 
-    public function mount(array $data)
+    public function mount(string $message)
     {
-        $this->data = $data;
+        $this->message = $message;
     }
 
     public function render()
