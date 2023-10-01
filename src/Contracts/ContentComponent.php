@@ -50,7 +50,7 @@ class ContentComponent extends Component
         $rendered = match($trait) {
             CanRenderString::class => static::renderString($component),
             CanRenderView::class => static::renderView($component)->render(),
-            CanRenderLivewire::class => static::renderLivewire($component)->html()
+            CanRenderLivewire::class => static::renderLivewire($component)
         };
 
         return $rendered;

@@ -26,10 +26,14 @@ it('will render a simple livewire component', function() {
         'type' => 'livewire-components.with-simple-livewire-component'
     ];
 
+    //$this->actingAs(User::factory()->create());
+
+    //\Filament\Facades\Filament::setCurrentPanel();
+
     \Pest\Livewire\livewire(EditPage::class, [
         'record' => $page->getKey()
     ])
-        ->assertArrayValueAtIndexEquals($expected, 'data.content', 0);
+    ->assertArrayValueAtIndexEquals($expected, 'data.content', 0);
 
     $this->assertStringContainsString('Just a simple message', $page->parsedContent);
     $this->assertStringContainsString('from livewire', $page->parsedContent);
@@ -79,7 +83,7 @@ it('will output the livewire component', function () {
 
     $component = \Livewire\Livewire::mount('simple-livewire-component', $data['data']);
 
-    $livewire_rendered = anonymizeLivewireComponent($component->html());
+    $livewire_rendered = anonymizeLivewireComponent($component);
     $component_rendered = anonymizeLivewireComponent(\Tests\Fixtures\Components\LivewireComponents\WithSimpleLivewireComponent::processrender($data['data']));
 
     $this->assertEquals(

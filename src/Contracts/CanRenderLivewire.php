@@ -4,11 +4,10 @@ namespace Titantwentyone\FilamentContentComponents\Contracts;
 
 use Exception;
 use Livewire\Livewire;
-use Livewire\Response;
 
 trait CanRenderLivewire
 {
-    protected static function renderLivewire(ContentComponent $component) : Response
+    protected static function renderLivewire(ContentComponent $component): string
     {
         static::$component ?? throw new Exception('no component property defined');
 

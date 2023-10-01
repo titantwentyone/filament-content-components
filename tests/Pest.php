@@ -19,6 +19,16 @@ uses(
     \Illuminate\Foundation\Testing\RefreshDatabase::class
 )->in('Feature');
 
+uses(
+    \Tests\Feature2TestCase::class,
+    \Illuminate\Foundation\Testing\RefreshDatabase::class
+)->in('Feature2');
+
+uses(
+    \Tests\Feature3TestCase::class,
+    \Illuminate\Foundation\Testing\RefreshDatabase::class
+)->in('Feature3');
+
 /*
 |--------------------------------------------------------------------------
 | Expectations
@@ -58,11 +68,12 @@ function anonymizeLivewireComponent($html) : string
 
     $html = preg_replace('/wire:id="([[:alnum:]]*?)"/', 'testing', $html);
     $initial_data_match = [];
-    preg_match('/wire:initial-data="([[:print:]]*?)"/', $html, $initial_data_match);
+    preg_match('/wire:snapshot="([[:print:]]*?)"/', $html, $initial_data_match);
     $initial_data_match = json_decode(html_entity_decode($initial_data_match[1]), true);
-    $initial_data_match['serverMemo']['checksum'] = 'testing';
-    $initial_data = "wire:initial-data=\"".htmlentities(json_encode($initial_data_match))."\"";
-    return preg_replace('/wire:initial-data="([[:print:]]*)"/', $initial_data, $html);
+    $initial_data_match['checksum'] = 'testing';
+    $initial_data = "wire:snapshot=\"".htmlentities(json_encode($initial_data_match))."\"";
+    return preg_replace('/wire:snapshot="([[:print:]]*)"/', $initial_data, $html);
+    return $html;
 }
 
 

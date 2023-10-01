@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class SimpleLivewireComponent extends Component
 {
+    public string $message;
     public string $another_message = 'from livewire';
 
     public function mount(string $message)

@@ -2,18 +2,25 @@
 
 namespace Titantwentyone\FilamentContentComponents;
 
-use Filament\PluginServiceProvider;
+use Filament\Contracts\Plugin;
+use Filament\Panel;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Str;
 use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Symfony\Component\Finder\SplFileInfo;
 use Titantwentyone\FilamentContentComponents\Console\Commands\MakeComponentCommand;
 use Titantwentyone\FilamentContentComponents\Contracts\ContentComponent;
 use function League\Uri\parse;
 
-class FilamentContentComponentsServiceProvider extends PluginServiceProvider
+class FilamentContentComponentsServiceProvider extends PackageServiceProvider
 {
+    public function getId(): string
+    {
+        return 'filament-content-components';
+    }
+
     public function configurePackage(Package $package): void
     {
         $package->name('filament-content-components')

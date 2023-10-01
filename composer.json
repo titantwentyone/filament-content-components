@@ -3,18 +3,20 @@
     "description": "Basic framework for collecting and displaying content through Filament",
     "type": "library",
     "require": {
-        "php": "^8.1",
-        "filament/filament": "^2.0",
-        "spatie/laravel-ignition": "^2.0"
+        "php": "^8.2",
+        "filament/filament": "^3.0",
+        "spatie/laravel-ignition": "^2.0",
+        "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
         "orchestra/testbench": "^8.0",
         "phpunit/phpunit": "^10.0",
-        "livewire/livewire": "^2.10.6",
+        "livewire/livewire": "^3.0",
         "laravel/sail": "^1.21",
         "pestphp/pest-plugin-livewire": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
-        "pestphp/pest": "^2.6"
+        "pestphp/pest": "^2.0",
+        "filament/upgrade": "^3.0-stable"
     },
     "license": "MIT",
     "autoload": {
@@ -26,18 +28,6 @@
         }
     },
     "autoload-dev": {
-        "exclude-from-classmap": [
-            "\\Pest\\PendingCalls\\TestCall",
-            "\\Pest\\Factories\\TestCaseFactory",
-            "\\Pest\\Factories\\TestCaseMethodFactory"
-        ],
-        "files": [
-            "overrides/pestphp/pest/src/PendingCalls/TestCall.php",
-            "overrides/pestphp/pest/src/Factories/TestCaseFactory.php",
-            "overrides/pestphp/pest/src/Factories/TestCaseMethodFactory.php",
-            "overrides/pestphp/pest/src/Factories/Annotations/Environment.php",
-            "overrides/pestphp/pest/src/Factories/Testbench/Environment.php"
-        ],
         "psr-4": {
             "Tests\\": "tests/"
         }

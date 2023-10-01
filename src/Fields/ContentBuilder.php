@@ -15,11 +15,11 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class ContentBuilder extends Builder
 {
+    private $components = [];
+
     protected function setUp() : void
     {
         parent::setUp();
-
-        $this->components();
     }
 
     /**
@@ -32,14 +32,29 @@ class ContentBuilder extends Builder
 
     public function components(array $components = []) : static
     {
-        if(count(config('filament-content-components.components'))) {
-            $components = config('filament-content-components.components');
-        } else {
-            //$components = count($components) ?: app('components');
-            if(!count($components)) {
-                $components = app('components');
+        if(!count($components)) {
+
+            if(config('filament-content-components.components') && count(config('filament-content-components.components'))) {
+                $components = config('filament-content-components.components');
+            } else {
+                //$components = count($components) ?: app('components');
+                if(!count($components)) {
+                    $components = app('components');
+                }
             }
+
         }
+
+        $this->components = $components;
+
+        $this->applyComponents();
+
+        return $this;
+    }
+
+    public function applyComponents(): void
+    {
+        $components = $this->components;
 
         $this->childComponents(function() use ($components) {
             return collect($components)->map(function($component) {
@@ -47,7 +62,5 @@ class ContentBuilder extends Builder
                     ->schema($component::getField());
             })->toArray();
         });
-
-        return $this;
     }
 }

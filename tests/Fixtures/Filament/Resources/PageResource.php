@@ -3,7 +3,7 @@
 namespace Tests\Fixtures\Filament\Resources;
 
 use Filament\Forms\Components\TextInput;
-use Filament\Resources\Form;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Tests\Fixtures\Components\LivewireComponents\WithComplexLivewireComponent;
 use Tests\Fixtures\Filament\Resources\PageResource\Pages\CreatePage;

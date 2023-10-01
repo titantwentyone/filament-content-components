@@ -6,6 +6,9 @@ use Livewire\Component;
 
 class ComplexLivewireComponent extends Component
 {
+    public string $message;
+    public string $happy;
+
     public function mount($message, $happy)
     {
         $this->message = $message;
