@@ -20,6 +20,8 @@ class ContentBuilder extends Builder
     protected function setUp() : void
     {
         parent::setUp();
+
+        $this->applyComponents();
     }
 
     /**
@@ -54,7 +56,9 @@ class ContentBuilder extends Builder
 
     public function applyComponents(): void
     {
-        $components = $this->components;
+        if(empty($components = $this->components)) {
+            $components = app('components');
+        }
 
         $this->childComponents(function() use ($components) {
             return collect($components)->map(function($component) {

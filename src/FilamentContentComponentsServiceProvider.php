@@ -40,8 +40,8 @@ class FilamentContentComponentsServiceProvider extends PackageServiceProvider
         $this->registerComponents(
             ContentComponent::class,
             $components,
-            config('filament-content-components.path'),
-            config('filament-content-components.namespace')
+            config('filament-content-components.path') ?: realpath(app_path('Components')),
+            config('filament-content-components.namespace') ?: 'App\\Components'
         );
 
         $this->app->instance('components', $components);
