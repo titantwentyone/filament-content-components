@@ -1,32 +1,7 @@
 <?php
 
-//getEnvironmentSetUp(function($app) {
-//    $app['config']->set('filament-content-components.namespace', '\Tests\Fixtures\Components');
-//    $app['config']->set('filament-content-components.path', __DIR__.'/Fixtures/Components');
-//});
-
 use Tests\Fixtures\Components\LivewireComponents\WithComplexLivewireComponent;
 use Tests\Fixtures\Components\StringComponents\StringContentComponent;
-
-//function components_defined_in_service_container($app)
-//{
-//    $app['config']->set('filament-content-components.namespace', 'Tests\Fixtures\Components');
-//    $app['config']->set('filament-content-components.path', 'tests/Fixtures/Components');
-//    $app['config']->set('filament-content-components.components', []);
-//}
-
-//function componentsDefinedInConfig($app)
-//{
-//    $app['config']->set('filament-content-components.namespace', '');
-//    $app['config']->set('filament-content-components.path', '');
-//
-//    $app['config']->set('filament-content-components.components', [
-//        WithComplexLivewireComponent::class,
-//        StringContentComponent::class
-//    ]);
-//}
-
-
 
 it('will allow components when defined on component', function () {
 

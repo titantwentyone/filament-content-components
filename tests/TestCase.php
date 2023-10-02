@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use App\Providers\Filament\AdminPanelProvider;
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
 use Filament\Actions\ActionsServiceProvider;
@@ -25,7 +24,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        //User::factory()->create();
+
         $this->actingAs(User::factory()->create());
     }
 
@@ -37,20 +36,6 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app): array
     {
         return array_merge(parent::getPackageProviders($app), [
-            /**
-            BladeCaptureDirectiveServiceProvider::class,
-            BladeHeroiconsServiceProvider::class,
-            BladeIconsServiceProvider::class,
-            FilamentServiceProvider::class,
-            FormsServiceProvider::class,
-            LivewireServiceProvider::class,
-            NotificationsServiceProvider::class,
-            SupportServiceProvider::class,
-            TablesServiceProvider::class,
-            TestingServiceProvider::class,
-            ResourceServiceProvider::class,
-            FilamentContentComponentsServiceProvider::class
-            **/
             ActionsServiceProvider::class,
             BladeCaptureDirectiveServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
@@ -82,23 +67,11 @@ class TestCase extends \Orchestra\Testbench\TestCase
             'prefix'   => '',
         ]);
 
-        //change location of view folder
-        $app['config']->set('view.paths', array_merge(
-//            $app['config']->get('view.paths'),
-//            [__DIR__.'/resources/views'],
-//            [resource_path('views')],
-//            [__DIR__.'/../vendor/filament/filament/resources/views']
-        ));
-
         $app['config']->set('view.paths', array_merge(
             $app['config']->get('view.paths'),
             [__DIR__ . '/resources/views']
         ));
 
-        //$app['config']->set('livewire.class_namespace', 'Tests\\Fixtures\\Http\\Livewire');
-        $app['config']->set('livewire.view_path', __DIR__ . '/resources/views/livewire');
-
-        //Specific config for Filament CMS
         $app['config']->set('filament-content-components.namespace', 'Tests\Fixtures\Components');
         $app['config']->set('filament-content-components.path', 'tests/Fixtures/Components');
 
