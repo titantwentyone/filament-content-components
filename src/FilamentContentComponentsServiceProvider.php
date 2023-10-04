@@ -44,7 +44,9 @@ class FilamentContentComponentsServiceProvider extends PackageServiceProvider
             config('filament-content-components.namespace') ?: 'App\\Components'
         );
 
-        $this->app->instance('components', $components);
+        ComponentRegister::registerComponents($components);
+
+        ComponentRegister::bindComponents();
     }
 
     private function registerComponents(string $baseClass, array &$register, ?string $directory, ?string $namespace): void
