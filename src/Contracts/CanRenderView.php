@@ -13,13 +13,13 @@ trait CanRenderView
     {
         $view = static::$view ?? static::getViewPath($component);
 
-        $view_folder = config('filament-content-components.view_root') ? config('filament-content-components.view_root')."." : '';
+        //$view_folder = config('filament-content-components.view_root') ? config('filament-content-components.view_root')."." : '';
 
-        $view = $view_folder.$view;
+        //$view = $view_folder.$view;
 
-        if((new \Illuminate\Filesystem\Filesystem)->isDirectory(resource_path('views/'.str_replace('.', '/', $view)))) {
-            $view = $view.'.index';
-        }
+//        if((new \Illuminate\Filesystem\Filesystem)->isDirectory(resource_path('views/'.str_replace('.', '/', $view)))) {
+//            $view = $view.'.index';
+//        }
 
         return view($view, [
             'data' => $component->getData()
