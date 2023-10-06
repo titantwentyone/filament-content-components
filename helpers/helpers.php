@@ -69,7 +69,7 @@ if(!function_exists('slugifyClass'))
 
         return Str::of(Arr::join([$namespace, $class], '.'))->trim('.')->toString();
          */
-        return Str::of($classname)->replace('\\', '.');
+        return Str::of($classname)->replace('\\', '.')->toString();
         //return $classname;
     }
 }

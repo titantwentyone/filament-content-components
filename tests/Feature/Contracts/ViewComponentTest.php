@@ -10,7 +10,7 @@ it('will render a view component', function() {
                 'data' => [
                     'text' => 'Some text here'
                 ],
-                'type' => 'view-components.view-content-component'
+                'type' => 'Tests.Fixtures.Components.ViewComponents.ViewContentComponent'
             ]
         ]
     ]);
@@ -28,7 +28,7 @@ it('will render a view component with overriden render method', function () {
                 'data' => [
                     'text' => 'Amazing!!'
                 ],
-                'type' => 'view-components.view-content-component-with-overridden-method'
+                'type' => 'Tests.Fixtures.Components.ViewComponents.ViewContentComponentWithOverriddenMethod'
             ]
         ]
     ]);
@@ -48,7 +48,7 @@ it('will render a view component with overriden view property', function () {
                 'data' => [
                     'text' => 'Amazing!!'
                 ],
-                'type' => 'view-components.view-content-component-with-overridden-view-property'
+                'type' => 'Tests.Fixtures.Components.ViewComponents.ViewContentComponentWithOverriddenViewProperty'
             ]
         ]
     ]);
@@ -68,7 +68,7 @@ it('will render a view component with overridden get view method', function () {
                 'data' => [
                     'happy' => 'no'
                 ],
-                'type' => 'view-components.view-content-component-with-overridden-get-view-method'
+                'type' => 'Tests.Fixtures.Components.ViewComponents.ViewContentComponentWithOverriddenGetViewMethod'
             ]
         ]
     ]);
@@ -83,7 +83,7 @@ it('will render a view component with overridden get view method', function () {
                 'data' => [
                     'happy' => 'yes'
                 ],
-                'type' => 'view-components.view-content-component-with-overridden-get-view-method'
+                'type' => 'Tests.Fixtures.Components.ViewComponents.ViewContentComponentWithOverriddenGetViewMethod'
             ]
         ]
     ]);

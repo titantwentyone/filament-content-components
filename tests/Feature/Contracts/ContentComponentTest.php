@@ -11,7 +11,7 @@ it('will render a string component', function () {
                     'greeting' => 'hello',
                     'name' => 'Jane'
                 ],
-                'type' => 'string-components.string-content-component'
+                'type' => 'Tests.Fixtures.Components.StringComponents.StringContentComponent'
             ]
         ]
     ]);
@@ -30,7 +30,7 @@ it('will render a view component', function () {
                 'data' => [
                     'text' => 'Some text here'
                 ],
-                'type' => 'view-components.view-content-component'
+                'type' => 'Tests.Fixtures.Components.ViewComponents.ViewContentComponent'
             ]
         ]
     ]);
@@ -49,7 +49,7 @@ it('will render a livewire component', function() {
                 'data' => [
                     'message' => 'Just a simple message'
                 ],
-                'type' => 'livewire-components.with-simple-livewire-component'
+                'type' => 'Tests.Fixtures.Components.LivewireComponents.WithSimpleLivewireComponent'
             ]
         ]
     ]);
@@ -58,7 +58,7 @@ it('will render a livewire component', function() {
         'data' => [
             'message' => 'Just a simple message'
         ],
-        'type' => 'livewire-components.with-simple-livewire-component'
+        'type' => 'Tests.Fixtures.Components.LivewireComponents.WithSimpleLivewireComponent'
     ];
 
     $this->assertStringContainsString('Just a simple message', $page->parsedContent);

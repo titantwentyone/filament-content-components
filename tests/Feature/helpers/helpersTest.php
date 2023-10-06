@@ -9,9 +9,9 @@ it('will get the namespace of a class', function() {
 it('will slugify a class', function () {
 
     expect(slugifyClass(\Tests\Fixtures\Components\InvalidComponent::class))
-        ->toBe('invalid-component');
+        ->toBe('Tests.Fixtures.Components.InvalidComponent');
 
     expect(slugifyClass(\Tests\Fixtures\Components\LivewireComponents\WithSimpleLivewireComponent::class))
-        ->toBe('livewire-components.with-simple-livewire-component');
+        ->toBe('Tests.Fixtures.Components.LivewireComponents.WithSimpleLivewireComponent');
 
 });

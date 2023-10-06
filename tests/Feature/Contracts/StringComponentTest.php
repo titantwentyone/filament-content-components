@@ -10,7 +10,7 @@ it('can handle different field names for content', function() {
                 'data' => [
                     'text' => 'Different field used'
                 ],
-                'type' => 'view-components.view-content-component'
+                'type' => 'Tests.Fixtures.Components.ViewComponents.ViewContentComponent'
             ]
         ]
     ]);
@@ -31,14 +31,14 @@ it('will render multiple components', function () {
                     'greeting' => 'greetings',
                     'name' => 'Bob'
                 ],
-                'type' => 'string-components.string-content-component'
+                'type' => 'Tests.Fixtures.Components.StringComponents.StringContentComponent'
             ],
             [
                 'data' => [
                     'greeting' => 'hello',
                     'name' => 'Jane'
                 ],
-                'type' => 'string-components.string-content-component'
+                'type' => 'Tests.Fixtures.Components.StringComponents.StringContentComponent'
             ]
         ]
     ]);
@@ -72,7 +72,7 @@ it('will render a string component', function () {
                     'greeting' => 'hello',
                     'name' => 'Jane'
                 ],
-                'type' => 'string-components.string-content-component'
+                'type' => 'Tests.Fixtures.Components.StringComponents.StringContentComponent'
             ]
         ]
     ]);
@@ -93,7 +93,7 @@ it('will render a string component with overriden render method', function () {
                     'greeting' => 'hello',
                     'name' => 'geoff'
                 ],
-                'type' => 'string-components.string-content-component'
+                'type' => 'Tests.Fixtures.Components.StringComponents.StringContentComponent'
             ]
         ]
     ]);

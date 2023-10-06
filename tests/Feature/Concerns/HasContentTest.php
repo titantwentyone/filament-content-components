@@ -10,7 +10,7 @@ it('will return the correct content for a field', function() {
                 'data' => [
                     'text' => 'Different field used'
                 ],
-                'type' => 'view-components.view-content-component'
+                'type' => 'Tests.Fixtures.Components.ViewComponents.ViewContentComponent'
             ]
         ]
     ]);

@@ -14,7 +14,7 @@ it('will render a simple livewire component', function() {
                 'data' => [
                     'message' => 'Just a simple message'
                 ],
-                'type' => 'livewire-components.with-simple-livewire-component'
+                'type' => 'Tests.Fixtures.Components.LivewireComponents.WithSimpleLivewireComponent'
             ]
         ]
     ]);
@@ -23,7 +23,7 @@ it('will render a simple livewire component', function() {
         'data' => [
             'message' => 'Just a simple message'
         ],
-        'type' => 'livewire-components.with-simple-livewire-component'
+        'type' => 'Tests.Fixtures.Components.LivewireComponents.WithSimpleLivewireComponent'
     ];
 
     //$this->actingAs(User::factory()->create());
@@ -50,7 +50,7 @@ it('will render a complex livewire component', function () {
                 'data' => [
                     'message' => 'Just a simple message'
                 ],
-                'type' => 'livewire-components.with-complex-livewire-component'
+                'type' => 'Tests.Fixtures.Components.LivewireComponents.WithComplexLivewireComponent'
             ]
         ]
     ]);
@@ -59,7 +59,7 @@ it('will render a complex livewire component', function () {
         'data' => [
             'message' => 'Just a simple message'
         ],
-        'type' => 'livewire-components.with-complex-livewire-component'
+        'type' => 'Tests.Fixtures.Components.LivewireComponents.WithComplexLivewireComponent'
     ];
 
     \Pest\Livewire\livewire(EditPage::class, [
