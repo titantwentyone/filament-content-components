@@ -11,26 +11,27 @@ if(!function_exists('parseContentComponent'))
      */
     function parseContentComponent(array $item, $parent = null, $children = null) : string
     {
-        $component_parts = explode('.', $item['type']);
-
-        $component_parts = collect($component_parts)
-            ->map(function($part) {
-                return Str::of($part)
-                        ->ucfirst()
-                        ->replace('-', '');
-                });
-
-        $component_name = '\\'.Arr::join($component_parts->toArray(), '\\');
-
-        //$component = config('filament-content-components.namespace')."\\".$component_name;
-        $component = $component_name;
+//        $component_parts = explode('.', $item['type']);
+//
+//        $component_parts = collect($component_parts)
+//            ->map(function($part) {
+//                return Str::of($part)
+//                        ->ucfirst()
+//                        ->replace('-', '');
+//                });
+//
+//        $component_name = '\\'.Arr::join($component_parts->toArray(), '\\');
+//
+//        //$component = config('filament-content-components.namespace')."\\".$component_name;
+        $component = $item['type'];
 
         if(class_exists($component)) {
             if (!method_exists($component, 'processRender')) {
                 throw new \BadMethodCallException('Method processRender not found on ' . $component . '. Have you extended from ' . \Titantwentyone\FilamentContentComponents\Contracts\ContentComponent::class);
             }
         } else {
-            throw new \Exception("The class {$component} does not exist");
+            //throw new \Exception("The class {$component} does not exist");
+            return "";
         }
 
         return $component::processRender($item['data'], $parent, $children);

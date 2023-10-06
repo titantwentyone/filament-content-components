@@ -11,7 +11,7 @@ it('will render a string component', function () {
                     'greeting' => 'hello',
                     'name' => 'Jane'
                 ],
-                'type' => 'Tests.Fixtures.Components.StringComponents.StringContentComponent'
+                'type' => 'Tests\\Fixtures\\Components\\StringComponents\\StringContentComponent'
             ]
         ]
     ]);
@@ -30,7 +30,7 @@ it('will render a view component', function () {
                 'data' => [
                     'text' => 'Some text here'
                 ],
-                'type' => 'Tests.Fixtures.Components.ViewComponents.ViewContentComponent'
+                'type' => 'Tests\\Fixtures\\Components\\ViewComponents\\ViewContentComponent'
             ]
         ]
     ]);
@@ -49,7 +49,7 @@ it('will render a livewire component', function() {
                 'data' => [
                     'message' => 'Just a simple message'
                 ],
-                'type' => 'Tests.Fixtures.Components.LivewireComponents.WithSimpleLivewireComponent'
+                'type' => 'Tests\\Fixtures\\Components\\LivewireComponents\\WithSimpleLivewireComponent'
             ]
         ]
     ]);
@@ -58,7 +58,7 @@ it('will render a livewire component', function() {
         'data' => [
             'message' => 'Just a simple message'
         ],
-        'type' => 'Tests.Fixtures.Components.LivewireComponents.WithSimpleLivewireComponent'
+        'type' => 'Tests\\Fixtures\\Components\\LivewireComponents\\WithSimpleLivewireComponent'
     ];
 
     $this->assertStringContainsString('Just a simple message', $page->parsedContent);
@@ -67,7 +67,7 @@ it('will render a livewire component', function() {
 })
 ->covers(\Titantwentyone\FilamentContentComponents\Contracts\ContentComponent::class);
 
-it('will throw an exception if the component does not use a valid trait', function () {
+it('will render an empty string if the component does not use a valid trait', function () {
 
     $page = \Tests\Fixtures\Models\Page::create([
         'title' => 'A Test Page',
@@ -82,7 +82,6 @@ it('will throw an exception if the component does not use a valid trait', functi
         ]
     ]);
 
-    $page->parsedContent;
+    expect($page->parsedContent)->toBeEmpty();
 })
-->covers(\Titantwentyone\FilamentContentComponents\Contracts\ContentComponent::class)
-->throws(Exception::class);
+->covers(\Titantwentyone\FilamentContentComponents\Contracts\ContentComponent::class);

@@ -3,14 +3,18 @@
 namespace Titantwentyone\FilamentContentComponents\Contracts;
 
 use Dotenv\Parser\Parser;
-use Filament\Forms\Components\Builder\Block;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Livewire\Component;
+use Titantwentyone\FilamentContentComponents\Components\InvalidComponent;
 
 class ContentComponent extends Component
 {
+    public static function getLabel()
+    {
+        return class_basename(static::class);
+    }
     public static function getField(): array
     {
         return [];
@@ -23,10 +27,14 @@ class ContentComponent extends Component
 
     final public function __construct(array $data, string $type, ContentComponent $parent = null, array $children = null)
     {
-        $this->data = $data;
-        $this->type = $type;
-        $this->parent = $parent;
-        $this->children = $children;
+        if(ContentComponent::isValidType($type)) {
+            $this->data = $data;
+            $this->type = $type;
+            $this->parent = $parent;
+            $this->children = $children;
+        } else {
+            return new InvalidComponent($data, $type, $parent, $children);
+        }
     }
 
 
@@ -43,7 +51,7 @@ class ContentComponent extends Component
 
         $trait ?? throw new \Exception('Component must use a component trait');
 
-        $component = new ContentComponent($data, get_class(), $parent, $children);
+        $component = new ContentComponent($data, get_called_class(), $parent, $children);
 
         $rendered = "";
 
@@ -80,5 +88,11 @@ class ContentComponent extends Component
     public function getType() : string
     {
         return $this->type;
+    }
+
+    public static function isValidType($type): bool
+    {
+        return (class_exists($type) && in_array($type, app('components'))) ||
+            $type == InvalidComponent::class;
     }
 }

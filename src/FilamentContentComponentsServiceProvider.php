@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Symfony\Component\Finder\SplFileInfo;
+use Titantwentyone\FilamentContentComponents\Components\InvalidComponent;
+use Titantwentyone\FilamentContentComponents\Console\Commands\CorrectComponentTypeCommand;
 use Titantwentyone\FilamentContentComponents\Console\Commands\MakeComponentCommand;
 use Titantwentyone\FilamentContentComponents\Contracts\ContentComponent;
 use function League\Uri\parse;
@@ -25,7 +27,10 @@ class FilamentContentComponentsServiceProvider extends PackageServiceProvider
     {
         $package->name('filament-content-components')
             ->hasConfigFile()
-            ->hasCommands(MakeComponentCommand::class)
+            ->hasCommands(
+                MakeComponentCommand::class,
+                CorrectComponentTypeCommand::class
+            )
             ->hasViews();
     }
 
@@ -45,6 +50,7 @@ class FilamentContentComponentsServiceProvider extends PackageServiceProvider
         );
 
         ComponentRegister::registerComponents($components);
+        //ComponentRegister::registerComponents([InvalidComponent::class]);
 
         ComponentRegister::bindComponents();
     }

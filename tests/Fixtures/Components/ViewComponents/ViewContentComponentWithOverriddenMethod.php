@@ -2,7 +2,6 @@
 
 namespace Tests\Fixtures\Components\ViewComponents;
 
-use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Textarea;
 use Illuminate\View\View;
 use Titantwentyone\FilamentContentComponents\Contracts\CanRenderView;

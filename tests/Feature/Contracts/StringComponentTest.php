@@ -10,7 +10,7 @@ it('can handle different field names for content', function() {
                 'data' => [
                     'text' => 'Different field used'
                 ],
-                'type' => 'Tests.Fixtures.Components.ViewComponents.ViewContentComponent'
+                'type' => 'Tests\\Fixtures\\Components\\ViewComponents\\ViewContentComponent'
             ]
         ]
     ]);
@@ -31,14 +31,14 @@ it('will render multiple components', function () {
                     'greeting' => 'greetings',
                     'name' => 'Bob'
                 ],
-                'type' => 'Tests.Fixtures.Components.StringComponents.StringContentComponent'
+                'type' => 'Tests\\Fixtures\\Components\\StringComponents\\StringContentComponent'
             ],
             [
                 'data' => [
                     'greeting' => 'hello',
                     'name' => 'Jane'
                 ],
-                'type' => 'Tests.Fixtures.Components.StringComponents.StringContentComponent'
+                'type' => 'Tests\\Fixtures\\Components\\StringComponents\\StringContentComponent'
             ]
         ]
     ]);
@@ -72,7 +72,7 @@ it('will render a string component', function () {
                     'greeting' => 'hello',
                     'name' => 'Jane'
                 ],
-                'type' => 'Tests.Fixtures.Components.StringComponents.StringContentComponent'
+                'type' => 'Tests\\Fixtures\\Components\\StringComponents\\StringContentComponent'
             ]
         ]
     ]);
@@ -93,7 +93,7 @@ it('will render a string component with overriden render method', function () {
                     'greeting' => 'hello',
                     'name' => 'geoff'
                 ],
-                'type' => 'Tests.Fixtures.Components.StringComponents.StringContentComponent'
+                'type' => 'Tests\\Fixtures\\Components\\StringComponents\\StringContentComponent'
             ]
         ]
     ]);
@@ -111,18 +111,20 @@ test('filament will correctly populate the content field', function () {
         'content' => [
             [
                 'data' => [
-                    'text' => 'Just rendering a string'
+                    'greeting' => 'Hello',
+                    'name' => 'There'
                 ],
-                'type' => 'simple-text-without-view'
+                'type' => \Tests\Fixtures\Components\StringComponents\StringContentComponent::class
             ]
         ]
     ]);
 
     $expected = [
         'data' => [
-            'text' => 'Just rendering a string'
+            'greeting' => 'Hello',
+            'name' => 'There'
         ],
-        'type' => 'simple-text-without-view'
+        'type' => \Tests\Fixtures\Components\StringComponents\StringContentComponent::class
     ];
 
     \Pest\Livewire\livewire(\Tests\Fixtures\Filament\Resources\PageResource\Pages\EditPage::class, [

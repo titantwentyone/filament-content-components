@@ -2,7 +2,6 @@
 
 namespace Tests\Fixtures\Components\LivewireComponents;
 
-use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Textarea;
 use Titantwentyone\FilamentContentComponents\Contracts\CanRenderLivewire;
 use Titantwentyone\FilamentContentComponents\Contracts\ContentComponent;
