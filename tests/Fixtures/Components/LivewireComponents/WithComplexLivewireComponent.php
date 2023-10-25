@@ -25,4 +25,9 @@ class WithComplexLivewireComponent extends ContentComponent
             'happy' => 'I am happy'
         ];
     }
+
+    public static function getLabel() : string
+    {
+        return "With Complex Livewire Component";
+    }
 }

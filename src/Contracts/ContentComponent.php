@@ -11,7 +11,7 @@ use Titantwentyone\FilamentContentComponents\Components\InvalidComponent;
 
 class ContentComponent extends Component
 {
-    public static function getLabel()
+    public static function getLabel() : string
     {
         return class_basename(static::class);
     }

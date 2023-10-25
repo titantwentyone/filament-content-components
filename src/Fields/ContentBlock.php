@@ -22,11 +22,11 @@ class ContentBlock extends \Filament\Forms\Components\Builder\Block
         return $static;
     }
 
-    public function getLabel(): string | Htmlable
+    public function getLabel(?array $state = null, ?string $uuid = null): string | Htmlable
     {
         return $this->evaluate(
             $this->label,
-            $this->labelState ? ['state' => $this->labelState] : [],
+            ['state' => $state, 'uuid' => $uuid],
         ) ?? $this->getDefaultLabel();
     }
 
