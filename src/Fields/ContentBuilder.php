@@ -55,7 +55,7 @@ class ContentBuilder extends Builder
             //modify the state of any invalid components to the new selected types
             $components_corrected = false;
 
-            foreach($state as $uuid => $block) {
+            foreach($state ?? [] as $uuid => $block) {
                 if(array_key_exists('type', $block)) {
                     if($block['type'] == InvalidComponent::class) {
                         if($block['data']['new_type']) {
