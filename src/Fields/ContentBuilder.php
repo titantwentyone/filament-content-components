@@ -53,6 +53,8 @@ class ContentBuilder extends Builder
         $this->beforeStateDehydrated(function($state, $component, $livewire, $record) {
 
             //modify the state of any invalid components to the new selected types
+            $components_corrected = false;
+
             foreach($state as $uuid => $block) {
                 if(array_key_exists('type', $block)) {
                     if($block['type'] == InvalidComponent::class) {
@@ -62,6 +64,7 @@ class ContentBuilder extends Builder
                             $state[$uuid]['data'] = $state[$uuid]['data']['data'];
                             unset($state[$uuid]['data']['new_type']);
                             unset($state[$uuid]['old_type']);
+                            $components_corrected = true;
                         } else {
                             //keep as is for now
                             $state[$uuid]['type'] = $state[$uuid]['old_type'];
@@ -79,7 +82,9 @@ class ContentBuilder extends Builder
             /**
              * @todo currently builder will not load up with correct invalid blocks if parent was invalid - need to refresh page in order to see change
              */
-            redirect($livewire->getResource()::getUrl('edit', ['record' => $record]));
+            if($components_corrected) {
+                redirect($livewire->getResource()::getUrl('edit', ['record' => $record]));
+            }
 
         });
     }
