@@ -7,6 +7,7 @@ use Filament\Panel;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Str;
+use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Symfony\Component\Finder\SplFileInfo;
@@ -14,6 +15,7 @@ use Titantwentyone\FilamentContentComponents\Components\InvalidComponent;
 use Titantwentyone\FilamentContentComponents\Console\Commands\CorrectComponentTypeCommand;
 use Titantwentyone\FilamentContentComponents\Console\Commands\MakeComponentCommand;
 use Titantwentyone\FilamentContentComponents\Contracts\ContentComponent;
+use Titantwentyone\FilamentContentComponents\Testing\AssertionsMixin;
 use function League\Uri\parse;
 
 class FilamentContentComponentsServiceProvider extends PackageServiceProvider
@@ -53,6 +55,8 @@ class FilamentContentComponentsServiceProvider extends PackageServiceProvider
         //ComponentRegister::registerComponents([InvalidComponent::class]);
 
         ComponentRegister::bindComponents();
+
+        Testable::mixin(new AssertionsMixin());
     }
 
     private function registerComponents(string $baseClass, array &$register, ?string $directory, ?string $namespace): void
